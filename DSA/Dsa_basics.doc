@@ -1,0 +1,65 @@
+DSA
+
+Time Complexity: the rate of which the time taken increases w.r.t input size
+Time Complexity != Time taken
+Yes, but depends on Device for Example:
+Same code on old windows(2sec) and on New MacBook(1sec); Same code same input but different time rate on different windows
+More input, increase in time.
+It is Denoted as Big-Oh Notation [Example: O(N)]
+3 rules:
+1.	Always compute Worst Case Scenario
+2.	Avoid Constants
+3.	Avoid Lower Values
+
+SCENARIOS
+BEST CASE – O(6N)
+AVG CASE-O(4N)
+WORST CASE-O(2N)
+Avoid Constants – O(4N^2+18N+10) if N=1 (4+18+10) the constant 10 doesn’t have any significant right?
+Avoid Lower Values: there will not be any biggest change in significant.
+
+3 types: Big-Oh (Worst Case-Upper Bond), thetha (Average Case-Middle Zone), omega (Best Cases-Lower Bond)  no one ask other than Big-Oh notation
+Space Complexity: The total space taken by the algorithm with respect to the input size
+		Auxiliary Space + Input Space
+A.S: The space you take to solve the problem
+I.S: The space you take to store input
+Example:
+Input A, Input B;
+C=A+B	here C is Auxiliary space, A & B are Input Space
+Most of the Servers take 1s = 10^8 operations;
+			    2s = 10^8 operations
+
+All the 20 pattern Questions
+
+Array Questions
+
+**Frequency Count**
+
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+      int[] arr={1,5,1,2,5,5,3,7,9,2};
+      reverse(arr);
+    }
+    public static void reverse(int arr[]){
+       Map<Integer, Integer> map = new HashMap<>();
+ 
+    for (int i = 0; i < arr.length; i++)
+    {
+        if (map.containsKey(arr[i]))
+        {
+            map.put(arr[i], map.get(arr[i]) + 1);
+        }
+        else
+        {
+            map.put(arr[i], 1);
+        }
+    }
+    // Traverse through map and print frequencies
+    for (Map.Entry<Integer,Integer> entry : map.entrySet())
+    {
+        System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+      
+        }
+    }helo

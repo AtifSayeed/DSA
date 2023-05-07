@@ -1,0 +1,809 @@
+**DSA**
+
+Time Complexity: the rate of which the time taken increases w.r.t input size
+Time Complexity != Time taken
+Yes, but depends on Device for Example:
+Same code on old windows(2sec) and on New MacBook(1sec); Same code same input but different time rate on different windows
+More input, increase in time.
+It is Denoted as Big-Oh Notation [Example: O(N)]
+3 rules:
+
+1. Always compute Worst Case Scenario
+2. Avoid Constants
+3. Avoid Lower Values
+   SCENARIOS
+   BEST CASE – O(6N)
+   AVG CASE-O(4N)
+   WORST CASE-O(2N)
+   Avoid Constants – O(4N^2+18N+10) if N=1 (4+18+10) the constant 10 doesn’t have any significant right?
+   Avoid Lower Values: there will not be any biggest change in significant.
+
+3 types: Big-Oh (Worst Case-Upper Bond), thetha (Average Case-Middle Zone), omega (Best Cases-Lower Bond)  no one ask other than Big-Oh notation
+Space Complexity: The total space taken by the algorithm with respect to the input size
+Auxiliary Space + Input Space
+A.S: The space you take to solve the problem
+I.S: The space you take to store input
+Example:
+Input A, Input B;
+C=A+B here C is Auxiliary space, A & B are Input Space
+Most of the Servers take 1s = 10^8 operations;
+2s = 10^8 operations
+
+**Array Questions**
+
+**Frequency Count**
+
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+      int[] arr={1,5,1,2,5,5,3,7,9,2};
+      reverse(arr);
+    }
+    public static void reverse(int arr[]){
+       Map<Integer, Integer> map = new HashMap<>();
+ 
+    for (int i = 0; i < arr.length; i++)
+    {
+        if (map.containsKey(arr[i]))
+        {
+            map.put(arr[i], map.get(arr[i]) + 1);
+        }
+        else
+        {
+            map.put(arr[i], 1);
+        }
+    }
+    // Traverse through map and print frequencies
+    for (Map.Entry<Integer,Integer> entry : map.entrySet())
+    {
+        System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+      
+  }
+}
+
+**Number is perfect**
+public class Main{
+    static boolean isPerfect(int n){
+        int sum=0;
+        for(int i=0;i<n;i++){
+            if(i%2==0){
+                sum=sum+i;
+            }
+        }if(sum==n)
+            return true;
+            else return false;
+        
+    }
+    
+    public static void main(String[] args){
+        boolean ex1=isPerfect(6);
+        boolean ex2=isPerfect(15);
+        if(ex1==true){
+            System.out.println("Perfect");
+        }
+        else{
+            System.out.println("Not Perfect");
+        }
+        if(ex2==true){
+            System.out.println("Perfect");
+        }
+        else{
+            System.out.println("Not Perfect");
+        }
+    }
+}
+
+**A.P Series**
+public class Main{
+    static double isAp(double a, double d, int n){
+     double sum=0.0;
+      for(int i=0;i<n;i++){
+          sum=sum+a;
+          a=a+d;
+      }
+      return sum;
+       
+    }
+    
+    public static void main(String[] args){
+        double a = 1.5, d = 3;
+    int n = 5;
+    System.out.print(isAp(a,d,n));
+    }
+}
+
+**G.P Series**
+import java.util.*;
+public class Main {
+  public static double SumofGP(double a, double r, int n) {
+    double sum = 0.0;
+    for (int i = 0; i < n; i++) {
+      sum += a;
+      a = a * r;
+    }
+    return sum;
+  }
+  public static void main(String args[]) {
+    double a = 2.0; // First term of G.P.
+    double r = 1.5; // common ratio of G.P.
+    int n = 4; // Number of terms of G.P.
+    System.out.println("Sum of GP Series is "+SumofGP(a, r, n));
+  }
+}
+
+**Maximum of 2**
+import java.util.*;
+public class Main {
+  
+  public static void main(String args[]) {
+     int num1=54;
+     int num2=57;
+    System.out.println(Math.min(num1,num2));
+  }
+}
+
+**Max of 3 numbers**
+import java.util.*;
+public class Main {
+  
+  public static void main(String args[]) {
+     int num1=54;
+     int num2=57;
+     int num3=58;
+    System.out.println(Math.min(num1,(Math.max(num2,num3))));
+  }
+}
+**Leap year**
+public class Main {
+  public static void main(String args[]) {
+    int year = 1992;
+    if (((year % 4 == 0) && (year % 100 != 0)) ||(year % 400 == 0)) {
+      System.out.println("Yes");
+    } else {
+      System.out.println("No");
+    }
+  }
+}
+**Reverse of a Number**
+import java.io.*;
+class Test
+{
+static private int Rev(int n)
+{
+	int d;
+	int rev = 0;
+	while (n != 0)
+	{
+		d = n % 10;
+		rev = rev * 10 + d;
+		n = n / 10;
+	}
+
+	return rev;
+}
+public static void main(String[] args)
+{
+	int n = 472;
+	System.out.print("The reverse of the given number is: "+Rev(n));
+}
+}
+**Max and Min in a Number**
+import java.util.*;
+public class Main {
+  
+  public static void main(String args[]) {
+      int n=245789;
+    int maxi=1;
+    int mini=9;
+    int a;
+    while(n>0){
+        a=n%10;
+        n=n/10;
+        maxi=Math.max(maxi,a);
+        mini=Math.min(mini,a);
+    }
+        System.out.println(maxi);
+        System.out.println(mini);
+    
+  }
+}
+**Fibonaci Seies upto Nth series**
+import java.util.*;
+public class Main {
+  
+  public static void main(String args[]) {
+   int n=5;
+   if(n==0){
+       System.out.print(0);
+   }else{
+       int secoundLast=0;
+       int last=1;
+       System.out.print(secoundLast+" "+ last +" ");
+       int cur;
+       for(int i=2;i<=n;i++){
+           cur=last+secoundLast;
+           secoundLast=last;
+           last=cur;
+           System.out.print(cur+" ");
+       }
+   }
+   }
+}
+**Factorial**
+public class Main {
+   static int factorial(int X) {
+      int ans = 1;
+      for (int i = 1; i <= X; i++) {
+         ans = ans * i;
+      }
+      return ans;
+   }
+   public static void main(String[] args) {
+
+      int X = 5;
+      int result = factorial(X);
+      System.out.println("The factorial of " + X + " is " + result);
+   }
+} 
+**Power of a Number**
+public class Main {
+  public static void main(String args[]) {
+    int n = 5, k = 3;
+    int ans = 1;
+    for (int i = 0; i < k; i++) {
+      ans = ans * n;
+    }
+    System.out.print(n+" raised to the power "+k+" is "+ans);
+  }
+}
+**Factors of a Number**
+import java.util.*;
+public class tuf {
+     static void Divisor(int n)
+        {
+            for (int i=1;i<=n;i++)
+                if (n%i==0)
+                    System.out.print(i+" ");
+        }
+        public static void main(String args[])
+        {   int n = 6;
+            System.out.print("Factors of " + n + " are: ");
+            Divisor(n);
+        }
+}
+**Strong Number**
+public class Main {
+   //Function to calculate the factorial of the individual digits
+   static int Factorial(int n) {
+      int fact = 1;
+      for (int i = 1; i <= n; i++) {
+         fact = fact * i;
+      }
+      return fact;
+   }
+
+   //Function to compute sum of factorials
+   static int Strong_No(int num) {
+      int sum = 0;
+
+      //Extract all the digits from num
+      while (num > 0) {
+         int digit = num % 10;
+         sum = sum + Factorial(digit);
+         num = num / 10;
+      }
+      return sum;
+   }
+
+   public static void main(String[] args) {
+
+      int number = 145;
+      int answer = Strong_No(number);
+
+      if (answer == number && number != 0) {
+
+         System.out.println("YES");
+      } 
+      else {
+         System.out.println("NO");
+      }
+   }
+}
+**Automorphoc**
+class Solution {
+
+  public static boolean isAutomorphic(int N) {
+    int sq = N * N;
+
+    while (N > 0) {
+
+      // Check if last digit is equal or not
+      if (N % 10 != sq % 10)
+        return false;
+
+      // Reducing the number and its square
+      N /= 10;
+      sq /= 10;
+    }
+
+    return true;
+  }
+  public static void main(String args[]) {
+    int n = 25;
+    if(isAutomorphic(n)==true)
+    System.out.println("Automorphic Number");
+    else
+    System.out.println("Not Automorphic Number");
+  }
+}     
+**GCD AND LCM**
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int a = 4, b = 8;
+	int gcd;
+	for (int i = 1; i <= min(a, b); i++) {
+		if (a % i == 0 && b % i == 0) {
+			gcd = i;
+		}
+	}
+	int lcm = (a * b) / gcd;
+	cout <<"The LCM of the two given numbers is "<<lcm;
+
+}
+**or**
+public class Main {
+  static int gcd(int a, int b) {
+    if (b == 0) {
+      return a;
+    }
+    return gcd(b, a % b);
+  }
+  public static void main(String args[]) {
+    int a = 4, b = 8;
+    int gcd = gcd(a, b);
+    int lcm = (a * b) / gcd;
+    System.out.print("The LCM of the two given numbers is "+lcm);
+  }
+}
+**Rotate Array by K Elements**
+import java.util.*;
+public class Main {
+  public static void swap(int[] arr, int a, int b, int k) {
+    for (int i = 0; i < k; i++) {
+      int temp = arr[a + i];
+      arr[a + i] = arr[b + i];
+      arr[b + i] = temp;
+    }
+  }
+  public static void BlockSwap(int[] arr, int i, int k, int n) {
+    if (k == 0 || k == n)
+      return;
+    // If first part and second part are of same size
+    if (k == n - k) {
+      swap(arr, i, n - k + i, k);
+      return;
+    }
+    // If first part of array is of smaller size
+    else if (k < n - k) {
+      swap(arr, i, n - k + i, k);
+      BlockSwap(arr, i, k, n - k); // second part of array is taken now
+    }
+    // If second part of array is of smaller size
+    else {
+      swap(arr, i, k, n - k);
+      BlockSwap(arr, n - k + i, 2 * k - n, k);
+    }
+  }
+  public static void main(String args[]) {
+    int[] arr = {1,2,3,4,5,6,7};
+    int n = 7;
+    int k = 2;
+    BlockSwap(arr, 0, k, n);
+    System.out.println("After Rotating the array ");
+    for (int i = 0; i < n; i++)
+      System.out.print(arr[i] + " ");
+  }
+}
+**Median of a Array**
+import java.io.*;
+import java.util.Arrays;
+class Test
+{
+static private void getMedian(int[] arr, int n)
+{
+	Arrays.sort(arr);
+	
+	if (n % 2 == 0)
+	{
+		int ind1 = (n / 2) - 1;
+		int ind2 = (n / 2);
+		System.out.print((double)(arr[ind1] + arr[ind2]) / 2);
+	}
+	else
+	{
+		System.out.print(arr[(n / 2)]);
+	}
+}
+public static void main(String[] args)
+{
+	int[] arr = {4, 7, 1, 2, 5, 6};
+	int n = 6;
+	System.out.print("The median of the array is: ");
+	getMedian(arr, n);
+}
+}
+**Remove Duplicates sorted**
+import java.util.*;
+public class Main {
+  
+  public static void main(String args[]) {
+    int arr[]={1,2,5,1,3,2};
+    int k=removeDuplicates(arr);
+    for(int i=0;i<k;i++){
+       System.out.print(arr[i]);
+    }
+    
+ }
+
+   public static int removeDuplicates(int[] arr){
+       HashSet<Integer> set = new HashSet<>();
+       for(int i=0;i<arr.length;i++){
+           set.add(arr[i]);
+       }
+       int k=set.size();
+       int j=0;
+       for(int x:set){
+           arr[j++]=x;
+       }return j;
+   }
+}
+**Remove Duplicates unsorted**
+import java.util.*;
+public class Main {
+  
+  public static void main(String args[]) {
+    int arr[]={1,2,5,1,3,2};
+    int n=6;
+    duplicates(arr,n);
+    }
+    
+ 
+
+   public static void duplicates(int[] arr, int n){
+       HashMap<Integer, Integer> mp = new HashMap<>();
+
+              for (int i = 0; i < n; i++) {
+                     if (!mp.containsKey(arr[i])) {
+                            System.out.print(arr[i] + " ");
+                            mp.put(arr[i], 1);
+                     }
+              }
+       }
+   
+}
+**Repeating Elements**
+import java.util.Arrays;
+
+public class Main
+{
+	static void findRepeatingElements(int arr[]) {
+	    Arrays.sort(arr);
+	    
+	    System.out.print("The repeating elements are: ");
+	    for(int i=0;i<arr.length-1;i++) 
+	        if(arr[i] == arr[i+1])
+	            System.out.print(arr[i]+" ");
+	}
+	public static void main(String[] args) {
+		int[] arr = {1,1,2,3,4,4,5,2};
+		findRepeatingElements(arr);
+	}
+}
+**Non Repeating**
+import java.util.*;
+public class MyClass {
+    public static void finfingNon(int[] arr){
+        Arrays.sort(arr);
+        if(arr[0]!=arr[1]){
+            System.out.print(arr[0]+" ");
+        }
+        for(int i=1;i<arr.length;i++){
+            if(arr[i-1]!=arr[i] && arr[i]!=arr[i+1]){
+                System.out.print(arr[i]+" ");
+            }
+        }
+        if(arr[arr.length-2]!=arr[arr.length-1]){
+            System.out.print(arr[arr.length-1]+" ");
+        }
+    }
+    public static void main(String args[]) {
+     int arr[]={1,5,4,1,1,4,3,9,9};
+        finfingNon(arr);
+    }
+}
+**Symmetric Array**
+import java.util.*;
+public class MyClass {
+    public static void Symmetric(int[][] arr, int n){
+       for(int i=0;i<n;i++){
+           for(int j=i+1;j<n;j++){
+               if(arr[j][0]==arr[i][1] && arr[j][1]==arr[i][0]){
+                   System.out.print("( "+arr[i][1]+","+arr[i][0]+" )"+" ");
+                   break;
+               }
+           }
+       }
+    }
+    public static void main(String args[]) {
+     int arr[][]={{1,2}, {2, 1}, {3, 4}, {4, 5}, {5, 4}};
+     int n=5;
+        Symmetric(arr,n);
+    }
+}
+**Max Product in a SubString**
+import java.util.*;
+public class Main
+{
+	static int maxProductSubArray(int arr[]) {
+	    int result = arr[0];
+	    for(int i=0;i<arr.length-1;i++) {
+	        int p = arr[i];
+	        for(int j=i+1;j<arr.length;j++) {
+	            result = Math.max(result,p);
+	            p *= arr[j];
+	        }
+	        result = Math.max(result,p);
+	    }
+	   return result;     
+	}
+	public static void main(String[] args) {
+		int nums[] = {1,2,-3,0,-4,-5};
+		int answer = maxProductSubArray(nums);
+		System.out.print("The maximum product subarray is: "+answer);
+	}
+}
+**Rank in Unsorted**
+import java.util.*;
+public class Main
+{
+
+	public static void main(String[] args) {
+		
+		    int arr[]={40,57,12,6,48,4};
+		    int n=6;
+		    for(int i=0;i<n;i++){
+		        HashSet <Integer> s = new HashSet<>();
+		        for(int j=0;j<n;j++){
+		            if(arr[j]<arr[i])
+		            s.add(arr[j]);
+		        }
+		    
+		    int rank=s.size()+1;
+		    System.out.print(rank);
+		    }
+		}
+	}
+**Check a Subset of a Array**
+import java.util.*;
+public class Main
+{
+    static boolean isSubset(int arr1[],int m,int arr2[],int n){
+    if(m>n)
+    return false;
+    for(int i=0;i<m;i++){
+        boolean present=false;
+        for(int j=0;j<n;j++){
+            if(arr2[j]==arr1[i]){
+                present=true;
+                break;
+            }
+        }if(present==false) return false;
+    }return true;
+}
+	public static void main(String[] args) {
+		int arr1[]={1,1,1};
+		int arr2[]={2,5,6,4,2};
+		
+		int m=arr1.length;
+		int n=arr2.length;
+		boolean ans = isSubset(arr1,m,arr2,n);
+		if(ans==true)
+		System.out.print("Yes");
+		else
+		System.out.print("NO");
+	}
+}
+or
+import java.util.*;
+public class Main
+{
+    static boolean isSubset(int arr1[],int m,int arr2[],int n){
+    if(m>n)
+    return false;
+        HashMap<Integer,Boolean> mp = new HashMap<>();
+
+    for(int i=0;i<n;i++){
+        mp.put(arr2[i],true);
+    }
+    for(int j=0;j<m;j++){
+        if(mp.containsKey(arr1[j])==false){
+            return false;
+        }
+    }return true;
+}
+	public static void main(String[] args) {
+		int arr1[]={1,1,1};
+		int arr2[]={2,1,5,6,4,2};
+		
+		int m=arr1.length;
+		int n=arr2.length;
+		boolean ans = isSubset(arr1,m,arr2,n);
+		if(ans==true)
+		System.out.print("Yes");
+		else
+		System.out.print("NO");
+	}
+}
+**Print only Alphabets**
+import java.util.*;
+public class Main {
+  // Function to remove vowels from a string
+  public static String RemoveVowels(String str) {
+      StringBuffer ans = new StringBuffer();
+   for(int i=0;i<str.length();i++){
+       int ascii = (int) str.charAt(i);
+       if((ascii>=65 &&ascii<=90) || (ascii>=97 && ascii<=122)){
+           ans.append(str.charAt(i));
+       }
+   }
+    return ans.toString();
+  }
+
+  public static void main(String[] args) {
+    String str = "tak15,e u forward";
+    System.out.println("String after removing the vowels \n"+RemoveVowels(str));
+  }
+}
+**Reverse a String**
+import java.util.*;
+ 
+public class takeuforward {
+    public static void main(String[] args)
+    {
+     String s="he";
+     StringBuilder str = new StringBuilder(s);
+    int i=0;
+    int j=s.length()-1;
+         str.setCharAt(i,s.charAt(j));
+         str.setCharAt(j,s.charAt(i));
+         System.out.print(str.toString());
+     
+    }
+}
+**Remove Brackets**
+import java.util.*;
+ 
+public class takeuforward {
+    public static void main(String[] args)
+    {
+        
+   String s="a+((b-c)+d)";
+    String str=s.replaceAll("[()]","");
+   System.out.print(str.toString());
+     
+    }
+}
+**Sum of Digit in a String**
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+     String s="54sd1";
+     int sum=0;
+     String tempSum="0";
+     for(int i=0;i<s.length();i++){
+         char c = s.charAt(i);
+         if(Character.isDigit(c)){
+             tempSum=tempSum+c;
+         }
+         else{
+             sum=sum+Integer.parseInt(tempSum);
+             tempSum="0";
+         }
+     }System.out.print(sum=sum+Integer.parseInt(tempSum));
+    }
+}
+
+**First and last Captial**
+import java.util.*;
+public class TUF {
+  public static String Capitalize(String str, int size) {
+    StringBuffer sb = new StringBuffer(str);
+
+    for (int i = 0; i < size; i++) {
+      if (i == 0 || i == (size - 1) && (int) str.charAt(i) >= 97) //Converting first
+      //and last index character to uppercase
+      {
+        sb.setCharAt(i, (char)((int) str.charAt(i) - 32));
+      } else if (str.charAt(i) == ' ') // Converting characters present before and
+      //after space to uppercase
+      {
+        if (((int) str.charAt(i - 1) - 32) >= 65) // Already not an uppercase letter
+          sb.setCharAt(i - 1, (char)((int) str.charAt(i - 1) - 32));
+
+        if (((int) str.charAt(i + 1) - 32) >= 65) // Already not an uppercase letter
+          sb.setCharAt(i + 1, (char)((int) str.charAt(i + 1) - 32));
+      }
+    }
+
+    return sb.toString();
+  }
+  public static void main(String args[]) {
+    String str = "take u forward is awesome";
+    int size = str.length();
+
+    System.out.println("String after capitalizing the first and last letter of each  word of the string: ");
+    System.out.println(Capitalize(str, size));
+  }
+}
+**Count Char Frequency**
+/*Java Program to find the frequency of characters in a string*/
+public class Main  
+{  
+     public static void main(String[] args) 
+     {  
+        String str = "Study Tonight";  
+        int[] freq = new int[str.length()];  
+        System.out.println("The entered string is "+str);
+        //Convert the given string into character array  
+        char str1[] = str.toCharArray();            
+        for(int i = 0; i <str.length(); i++) 
+        {  
+            freq[i] = 1;  
+            for(int j = i+1; j <str.length(); j++) 
+            {  
+                if(str1[i] == str1[j])
+                {  
+                    freq[i]++;  
+                      
+                    //Set str1[j] to 0 to avoid printing visited character  
+                    str1[j] = '0';  
+                }  
+            }  
+        }            
+        //Displays the characters and their corresponding frequency  
+        System.out.println("Frequencies of the characters in the string are as below: "); 
+        System.out.println("Characters  frequencies");  
+        for(int i = 0; i <freq.length; i++) 
+        {  
+            if(str1[i] != ' ' && str1[i] != '0')  
+                System.out.println(str1[i] + "              " + freq[i]);  
+        }  
+    }  
+}  
+**Frequently occuring Character**
+public class Main {
+   static char maxOccurringChar(String str) {
+      char ans = 'a';
+      int maxfreq = 0, n = str.length();
+      int count[] = new int[256];
+      for (int i = 0; i < n; i++) {
+         count[str.charAt(i)]++;
+         if (count[str.charAt(i)] > maxfreq) {
+            maxfreq = count[str.charAt(i)];
+            ans = str.charAt(i);
+         }
+      }
+      return ans;
+   }
+   public static void main(String[] args) {
+      String str = "takeuforward";
+      System.out.println("Maximum occurring character is " + maxOccurringChar(str));
+   }
+} 
+
+
+Sorting
+layer
